@@ -3,13 +3,23 @@ const express = require('express')
 // Starting express
 const app = express()
 
-// Params são utilizados para passar dados simples. como: id, name, etc...
+// (Route Params ':/params') são utilizados para passar dados simples. como: id, name, etc...
 app.get('/message/:id_product/:name_product', (request, response) => {
   // Desestruturando params:
   const { id_product, name_product } = request.params
   response.send(`
   Id do produto: ${id_product}. <br>
   Nome do produto: ${name_product}.
+  `)
+})
+
+// (Query Params)Exemple:'users?page=5&category=10' 
+
+app.get('/users', (request, response) => {
+  const { page, category } = request.query
+  response.send(`
+  Página: ${page}. <br>
+  Categoria: ${category}.
   `)
 })
 
