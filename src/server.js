@@ -13,13 +13,13 @@ app.get('/message/:id_product/:name_product', (request, response) => {
   `)
 })
 
-// (Query Params)Exemple:'users?page=5&category=10' 
+// (Query Params)Exemple:'users?page=5&category=10'
 
 app.get('/users', (request, response) => {
   const { page, category } = request.query
   response.send(`
-  Página: ${page}. <br>
-  Categoria: ${category}.
+  Número da Página: ${page}. <br>
+  Categoria do produto: ${category}.
   `)
 })
 
