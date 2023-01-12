@@ -1,9 +1,10 @@
 const { Router } = require('express')
-const UsersController = require("../routes")
+const UsersController = require("../controllers/UsersController")
+
 const usersRoutes = Router()
-// Query Params
-usersRoutes.post('/', (request, response) => {
-  
-})
+const usersController = new UsersController() // instanciando na memória 
+
+// identifica o endereço e direciona para o controller correto.
+usersRoutes.post('/', usersController.create) 
 
 module.exports = usersRoutes
