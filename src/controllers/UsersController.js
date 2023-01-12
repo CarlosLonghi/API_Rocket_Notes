@@ -1,3 +1,5 @@
+const AppError = require('../utils/AppError')
+
 class UsersController {
   /*Métodos do Controller:
    *index - GET para listar vários registros.
@@ -8,7 +10,13 @@ class UsersController {
    */
   create(request, response) {
     const { name, email, password } = request.body
-    response.json({ name, email, password })
+
+    if (!name) {
+      throw new AppError('Nome é obrigatório!')
+    }
+
+    //HTTP Status Code 201:Created
+    response.status(201).json({ name, email, password })
   }
 }
 
