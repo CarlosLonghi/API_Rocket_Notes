@@ -1,8 +1,6 @@
 // Imports
 require('express-async-errors')
-
 const AppError = require('./utils/AppError')
-
 const express = require('express')
 // Importing index.js
 const routes = require('./routes')

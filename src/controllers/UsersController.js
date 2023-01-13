@@ -14,7 +14,6 @@ class UsersController {
     if (!name) {
       throw new AppError('Nome é obrigatório!')
     }
-
     //HTTP Status Code 201:Created
     response.status(201).json({ name, email, password })
   }

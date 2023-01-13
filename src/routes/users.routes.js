@@ -1,8 +1,10 @@
+// Imports
 const { Router } = require('express')
 const UsersController = require("../controllers/UsersController")
 
 const usersRoutes = Router()
-const usersController = new UsersController() // instanciando na memória 
+// Instanciando na memória 
+const usersController = new UsersController() 
 
 // identifica o endereço e direciona para o controller correto.
 usersRoutes.post('/', usersController.create) 
