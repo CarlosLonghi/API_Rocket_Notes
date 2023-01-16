@@ -8,5 +8,6 @@ const usersController = new UsersController()
 
 // identifica o endereço e direciona para o controller correto.
 usersRoutes.post('/', usersController.create) 
+usersRoutes.put('/:id', usersController.update)
 
 module.exports = usersRoutes
