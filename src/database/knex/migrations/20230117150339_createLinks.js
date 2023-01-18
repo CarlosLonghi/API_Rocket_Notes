@@ -12,4 +12,4 @@ exports.up = knex =>
     table.timestamp('created_at').default(knex.fn.now())
   })
 
-exports.down = knex => knex.schema.dropTable('tags')
+exports.down = knex => knex.schema.dropTable('links')

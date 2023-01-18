@@ -8,7 +8,8 @@ module.exports = {
     },
 
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb)
+      afterCreate: (connection, callback) =>
+        connection.run('PRAGMA foreign_keys = ON', callback)
     },
 
     migrations: {
@@ -20,6 +21,7 @@ module.exports = {
         'migrations'
       )
     },
+
     useNullAsDefault: true
   }
 }
