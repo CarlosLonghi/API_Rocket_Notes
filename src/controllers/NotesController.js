@@ -22,8 +22,8 @@ class NotesController {
 
     const tagsInsert = tags.map(name => {
       return {
-        note_id,
         name,
+        note_id,
         user_id
       }
     })
