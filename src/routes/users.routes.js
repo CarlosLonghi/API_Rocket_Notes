@@ -2,10 +2,10 @@
 const { Router } = require('express')
 const UsersController = require("../controllers/UsersController")
 
-const usersRoutes = Router()
 // Instanciando na memória 
 const usersController = new UsersController() 
 
+const usersRoutes = Router()
 // identifica o endereço e redireciona para o controller correto.
 usersRoutes.post('/', usersController.create) 
 usersRoutes.put('/:id', usersController.update)
