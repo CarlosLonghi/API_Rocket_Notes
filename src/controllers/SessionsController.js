@@ -1,14 +1,19 @@
 const knex = require('../database/knex')
 const AppError = require('../utils/AppError')
+const { compare } = require('bcryptjs')
 
 class SessionsController {
   async create(request, response) {
     const { email, password } = request.body
 
     const user = await knex('users').where({ email }).first()
-
     if (!user) {
-      throw new AppError('E-mail incorreto, ou não cadastrado!', 401)
+      throw new AppError('E-mail e/ou Senha incorretos', 401)
+    }
+
+    const passwordMatched = await compare(password, user.password)
+    if (!passwordMatched) {
+      throw new AppError('E-mail e/ou Senha incorretos', 401)
     }
 
     return response.json(user)
