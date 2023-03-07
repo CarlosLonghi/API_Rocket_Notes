@@ -9,7 +9,7 @@ function ensureAuthenticated(request, response, next) {
     throw new AppError('JWT Token não informado!', 401)
   }
 
-  const [, token] = authHeader.split(' ')
+  const [, token] = authHeader.split(' ') //Bearer xxxx(token)
 
   try {
     //sub(desestrutura o resultado da função): user_id(aliasSQL é um apelido para uma tabela ou uma coluna)
