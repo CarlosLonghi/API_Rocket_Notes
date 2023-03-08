@@ -5,12 +5,10 @@ const uploadConfig = require('../configs/upload')
 class DiskStorage {
 
   async saveFile(file){
-    //Transporta o arquivo, da pasta Tmp para uploads
     await fs.promises.rename(
       path.resolve(uploadConfig.TMP_FOLDER, file),
       path.resolve(uploadConfig.UPLOADS_FOLDER, file)
     )
-
     return file
   }
 
