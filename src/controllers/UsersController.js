@@ -3,6 +3,7 @@ const AppError = require('../utils/AppError')
 
 const UserRepository = require('../repositories/UserRepository')
 const sqliteConnection = require('../database/sqlite')
+const UserCreateService = require('../services/UserCreateService')
 
 class UsersController {
   /*Métodos do Controller:
@@ -17,16 +18,9 @@ class UsersController {
     const { name, email, password } = request.body
 
     const userRepository = new UserRepository()
-
-    const checkUserExist = await userRepository.findByEmail(email)
-
-    if (checkUserExist) {
-      throw new AppError('Este e-mail já está em uso!')
-    }
-
-    const hashedPassword = await hash(password, 8)
-
-    await userRepository.create({ name, email, password: hashedPassword })
+    const userCreateService = new UserCreateService(userRepository)
+    
+    await userCreateService.execute({ name, email, password })
     
     return response.status(201).json() //HTTP Status Code 201:Created
   }
